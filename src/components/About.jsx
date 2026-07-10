@@ -110,17 +110,17 @@ export default function About() {
         className="max-w-[1280px] mx-auto px-[24px] md:px-[64px] relative z-10"
       >
         {/* Section Header */}
-        <motion.div variants={itemVariants} className="flex items-center gap-4 mb-16">
-          <span className="label-mono text-[var(--color-tech-blue)]">01.</span>
-          <h2 className="headline-lg text-[var(--color-primary)] font-mono flex items-center">
-            &lt;AboutMe /&gt;
+        <motion.div variants={itemVariants} className="flex items-center gap-3 md:gap-4 mb-12 md:mb-16">
+          <span className="label-mono text-[var(--color-tech-blue)] shrink-0">01.</span>
+          <h2 className="headline-lg text-[28px] sm:text-[36px] md:text-5xl text-[var(--color-primary)] font-mono flex items-center shrink-0 whitespace-nowrap">
+            &lt;AboutMe&nbsp;/&gt;
             <motion.span
               animate={{ opacity: [1, 0, 1] }}
               transition={{ duration: 1, repeat: Infinity }}
-              className="ml-2 w-3 h-8 md:h-10 bg-[var(--color-tech-blue)] inline-block"
+              className="ml-2 w-2 h-6 md:w-3 md:h-8 lg:h-10 bg-[var(--color-tech-blue)] inline-block shrink-0"
             />
           </h2>
-          <div className="hidden sm:block flex-1 h-px bg-[var(--color-outline-variant)]" />
+          <div className="hidden sm:block flex-1 h-px bg-[var(--color-outline-variant)] ml-4" />
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center" style={{ perspective: "1200px" }}>
@@ -180,7 +180,7 @@ export default function About() {
               opacity: imgOpacity,
               transformStyle: "preserve-3d"
             }}
-            className="flex justify-center items-center relative"
+            className="flex justify-center items-center relative order-first lg:order-last mb-8 lg:mb-0"
           >
             <div className="relative w-full max-w-[400px] aspect-[4/5]">
               {/* Animated glowing background */}
@@ -212,7 +212,7 @@ export default function About() {
                 animate={{ y: [0, 15, 0], rotate: [-2, 2, -2] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                 style={{ transform: "translateZ(30px)" }}
-                className="absolute -right-6 bottom-20 bg-[#0D1117] px-6 py-4 rounded-2xl shadow-2xl border border-gray-800 flex items-center gap-3 z-30"
+                className="absolute -right-2 md:-right-6 bottom-20 bg-[#0D1117] px-4 py-3 md:px-6 md:py-4 rounded-2xl shadow-2xl border border-gray-800 flex items-center gap-2 md:gap-3 z-30"
               >
                 <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
                 <div className="flex flex-col font-mono">
@@ -226,7 +226,7 @@ export default function About() {
                 animate={{ y: [0, -15, 0], rotate: [2, -2, 2] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 style={{ transform: "translateZ(40px)" }}
-                className="absolute -left-6 top-20 bg-white/90 backdrop-blur-md px-5 py-3 rounded-xl shadow-xl border border-gray-200 flex items-center gap-2 z-30"
+                className="absolute -left-2 md:-left-6 top-20 bg-white/90 backdrop-blur-md px-4 py-2 md:px-5 md:py-3 rounded-xl shadow-xl border border-gray-200 flex items-center gap-2 z-30"
               >
                 <span className="text-xl font-mono text-[var(--color-primary)] font-bold">{`</>`}</span>
                 <span className="text-[12px] font-mono text-gray-600 font-bold tracking-wider">CLEAN CODE</span>

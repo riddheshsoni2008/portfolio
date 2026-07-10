@@ -9,7 +9,7 @@ const ArchResumeBtn = () => {
     <a
       href="/resume.pdf"
       download="Riddhesh_Resume.pdf"
-      className="absolute top-10 left-1/2 -translate-x-1/2 w-[350px] h-[350px] md:w-[400px] md:h-[400px] z-0 flex justify-center cursor-pointer group"
+      className="absolute top-10 left-1/2 -translate-x-1/2 w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] z-0 flex justify-center cursor-pointer group"
       title="Download Resume"
     >
       <motion.div
@@ -59,7 +59,7 @@ const WanderingBadge = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: -15 }}
           transition={{ duration: 0.5, type: "spring", stiffness: 200, damping: 15 }}
-          className="absolute bg-white/90 backdrop-blur-md px-5 py-3 rounded-2xl shadow-xl border border-white/20 flex items-center gap-3 pointer-events-auto"
+          className="absolute bg-white/90 backdrop-blur-md px-4 sm:px-5 py-2 sm:py-3 rounded-2xl shadow-xl border border-white/20 flex items-center gap-2 sm:gap-3 pointer-events-auto"
           style={{ top: badges[currentIndex].top, left: badges[currentIndex].left, right: badges[currentIndex].right }}
         >
           <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse ring-4 ring-green-100 shrink-0"></div>

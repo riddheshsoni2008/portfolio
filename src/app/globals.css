@@ -65,6 +65,17 @@ html, body {
   line-height: 32px;
 }
 
+@media (max-width: 768px) {
+  .headline-lg {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .headline-md {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
 .body-lg {
   font-size: 18px;
   font-weight: 400;
@@ -196,4 +207,13 @@ html, body {
   60% { clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%); }
   80% { clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%); }
   100% { clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%); }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(12deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(12deg);
+  }
 }

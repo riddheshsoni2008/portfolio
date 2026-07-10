@@ -92,11 +92,11 @@ export default function Projects() {
       {/* 400vh container gives us enough scroll room to transition 4 projects */}
       <div ref={containerRef} className="h-[400vh] relative">
         {/* Sticky container that stays on screen while scrolling */}
-        <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
+        <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden px-4">
           <FloatingProjectBg />
 
           {/* Header */}
-          <div className="w-full max-w-[1280px] mx-auto px-[24px] md:px-[64px] absolute top-16 md:top-24 left-0 right-0 z-20 pointer-events-none">
+          <div className="w-full max-w-[1280px] mx-auto px-[24px] md:px-[64px] z-20 mb-6 md:mb-10 mt-8 md:mt-0">
             <div className="flex items-center gap-2 md:gap-4 mb-2">
               <span className="label-mono text-[var(--color-tech-blue)]">03.</span>
               <h2 className="headline-lg text-[var(--color-primary)] font-mono flex items-center whitespace-nowrap">
@@ -108,13 +108,13 @@ export default function Projects() {
                 />
               </h2>
             </div>
-            <p className="body-lg text-[var(--color-on-surface-variant)] max-w-2xl font-mono text-xs sm:text-sm md:text-base mt-4">
+            <p className="body-lg text-[var(--color-on-surface-variant)] max-w-2xl font-mono text-xs sm:text-sm md:text-base mt-2 md:mt-4">
               <span className="text-[#3b82f6]">const</span> <span className="text-[#eab308]">scrollDown</span> = <span className="text-[#a855f7]">() =&gt;</span> viewWork();
             </p>
           </div>
 
           {/* Cards Container */}
-          <div className="relative w-full max-w-[1000px] h-[600px] sm:h-[550px] md:h-[500px] mt-32 md:mt-20 px-4 md:px-0">
+          <div className="relative w-full max-w-[1000px] h-[460px] sm:h-[430px] md:h-[500px] px-4 md:px-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -142,8 +142,8 @@ export default function Projects() {
 
                   {/* Content Split */}
                   <div className="flex flex-col md:flex-row flex-1 overflow-hidden z-10">
-                    {/* Left side: Abstract Aesthetic Visualization */}
-                    <div className={`w-full md:w-5/12 h-48 md:h-full ${projects[activeIndex].color} flex flex-col items-center justify-center relative overflow-hidden group border-b md:border-b-0 md:border-r border-gray-800`}>
+                    {/* Left side: Abstract Aesthetic Visualization - Hidden on Mobile */}
+                    <div className={`hidden md:flex md:w-5/12 h-full ${projects[activeIndex].color} flex-col items-center justify-center relative overflow-hidden group border-r border-gray-800`}>
                       {/* Animated Background Mesh */}
                       <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-700" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.8) 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
 
@@ -153,7 +153,7 @@ export default function Projects() {
                         initial={{ y: 50, opacity: 0 }}
                         animate={{ y: 0, opacity: 0.05 }}
                         transition={{ duration: 0.5 }}
-                        className="absolute font-mono text-[150px] md:text-[250px] font-black text-white pointer-events-none select-none z-0 tracking-tighter mix-blend-overlay"
+                        className="absolute font-mono text-[250px] font-black text-white pointer-events-none select-none z-0 tracking-tighter mix-blend-overlay"
                       >
                         0{activeIndex + 1}
                       </motion.div>
@@ -170,17 +170,17 @@ export default function Projects() {
                         <motion.div
                           animate={{ rotate: 360 }}
                           transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-                          className="absolute w-28 h-28 md:w-40 md:h-40 border border-white/20 rounded-full border-t-white/80"
+                          className="absolute w-40 h-40 border border-white/20 rounded-full border-t-white/80"
                         />
                         <motion.div
                           animate={{ rotate: -360 }}
                           transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-                          className="absolute w-36 h-36 md:w-52 md:h-52 border border-white/10 rounded-full border-b-white/50"
+                          className="absolute w-52 h-52 border border-white/10 rounded-full border-b-white/50"
                         />
 
                         {/* Project Initial Glass Box */}
-                        <div className="w-16 h-16 md:w-24 md:h-24 bg-black/30 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_50px_rgba(255,255,255,0.3)] transition-all duration-500 group-hover:scale-110">
-                          <span className="text-2xl md:text-4xl font-black font-mono text-white/90 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">
+                        <div className="w-24 h-24 bg-black/30 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_50px_rgba(255,255,255,0.3)] transition-all duration-500 group-hover:scale-110">
+                          <span className="text-4xl font-black font-mono text-white/90 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">
                             {projects[activeIndex].shortName}
                           </span>
                         </div>
@@ -218,7 +218,7 @@ export default function Projects() {
                               y: { duration: cfg.dur, repeat: Infinity, ease: "easeInOut", delay: cfg.delay }
                             }}
                             style={posStyle}
-                            className="absolute bg-black/60 backdrop-blur-lg px-3 py-1.5 rounded-lg border border-white/15 font-mono text-[10px] md:text-xs z-20 whitespace-nowrap shadow-[0_0_15px_rgba(0,0,0,0.3)]"
+                            className="absolute bg-black/60 backdrop-blur-lg px-3 py-1.5 rounded-lg border border-white/15 font-mono text-xs z-20 whitespace-nowrap shadow-[0_0_15px_rgba(0,0,0,0.3)]"
                           >
                             <span className="text-[#C678DD]">{'{'}  </span>
                             <span className="text-[#61DAFB] font-semibold">{tech}</span>
@@ -228,35 +228,35 @@ export default function Projects() {
                       })}
                     </div>
 
-                    {/* Right side: Content */}
-                    <div className="w-full md:w-7/12 p-6 sm:p-8 md:p-10 flex flex-col justify-center bg-[#0D1117] text-gray-300 relative">
-                      <div className="font-mono text-[#79C0FF] text-xs md:text-sm mb-3 opacity-80">
+                    {/* Right side: Content - Full width on Mobile */}
+                    <div className="w-full md:w-7/12 p-5 sm:p-8 md:p-10 flex flex-col justify-center bg-[#0D1117] text-gray-300 relative h-full">
+                      <div className="font-mono text-[#79C0FF] text-[10px] sm:text-xs md:text-sm mb-2 opacity-80">
                         // Project 0{activeIndex + 1}
                       </div>
 
-                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 font-sans tracking-tight">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-4 font-sans tracking-tight">
                         {projects[activeIndex].title}
                       </h3>
 
-                      <div className="text-sm md:text-base text-gray-400 mb-8 font-mono leading-relaxed bg-[#161B22] p-4 rounded-xl border border-gray-800">
+                      <div className="text-[11px] sm:text-xs md:text-sm text-gray-400 mb-4 sm:mb-6 font-mono leading-relaxed bg-[#161B22] p-3 sm:p-4 rounded-xl border border-gray-800">
                         <span className="text-[#FF7B72]">const</span> <span className="text-[#79C0FF]">description</span> <span className="text-[#FF7B72]">=</span> <span className="text-[#A5D6FF]">"{projects[activeIndex].description}"</span>;
                       </div>
 
-                      <div className="flex flex-wrap gap-2 mb-8">
+                      <div className="flex flex-wrap gap-1.5 mb-6">
                         {projects[activeIndex].tech.map((t) => (
-                          <span key={t} className="px-3 py-1.5 rounded-md bg-blue-500/10 text-[#79C0FF] border border-blue-500/20 font-mono text-[11px] md:text-xs">
+                          <span key={t} className="px-2 py-1 rounded-md bg-blue-500/10 text-[#79C0FF] border border-blue-500/20 font-mono text-[9px] sm:text-[10px] md:text-xs">
                             {t}
                           </span>
                         ))}
                       </div>
 
-                      <div className="flex items-center gap-4 mt-auto font-mono">
+                      <div className="flex items-center gap-3 mt-auto font-mono">
                         <motion.a
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           href={projects[activeIndex].github}
                           target="_blank" rel="noopener noreferrer"
-                          className="btn-secondary text-sm !border-gray-700 !text-gray-300 hover:!bg-gray-800 hover:!text-white transition-colors duration-300 relative group overflow-hidden"
+                          className="btn-secondary text-[11px] sm:text-xs md:text-sm py-2 px-4 sm:py-2.5 sm:px-5 !border-gray-700 !text-gray-300 hover:!bg-gray-800 hover:!text-white transition-colors duration-300 relative group overflow-hidden"
                         >
                           <span className="relative z-10">&lt;Code /&gt;</span>
                           <div className="absolute inset-0 bg-white/10 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 z-0"></div>
@@ -266,7 +266,7 @@ export default function Projects() {
                           whileTap={{ scale: 0.95 }}
                           href={projects[activeIndex].link}
                           target="_blank" rel="noopener noreferrer"
-                          className="btn-primary text-sm shadow-[0_0_20px_rgba(29,78,216,0.4)] transition-all duration-300 relative group overflow-hidden"
+                          className="btn-primary text-[11px] sm:text-xs md:text-sm py-2 px-4 sm:py-2.5 sm:px-5 shadow-[0_0_20px_rgba(29,78,216,0.4)] transition-all duration-300 relative group overflow-hidden"
                         >
                           <span className="relative z-10 flex items-center gap-2">
                             Run()

@@ -4,10 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { motion, animate, useInView, AnimatePresence } from "framer-motion";
 import Typewriter from "typewriter-effect";
 
+
 const ArchResumeBtn = () => {
   return (
     <a
-      href="/resume.pdf"
+      href="/riddheshsoni (1).pdf"
       download="Riddhesh_Resume.pdf"
       className="absolute top-10 left-1/2 -translate-x-1/2 w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] z-0 flex justify-center cursor-pointer group"
       title="Download Resume"
@@ -174,8 +175,8 @@ const FloatingIcons = () => {
 
       {/* Node.js Logo */}
       <motion.div
-        animate={{ 
-          x: [0, 30, -20, 0], 
+        animate={{
+          x: [0, 30, -20, 0],
           y: [0, -30, 20, 0],
           rotate: [0, 15, -10, 0]
         }}
@@ -183,8 +184,8 @@ const FloatingIcons = () => {
         className="absolute bottom-24 right-10 md:right-28 text-[#339933] opacity-30"
       >
         <svg viewBox="0 0 118 118" className="w-14 h-14" fill="currentColor">
-          <path d="M57.6 0L1.7 32.2v64.6L57.6 118l55.8-32.2V32.2L57.6 0zm45.3 90.7L57.6 106 12.3 90.7V37.9L57.6 11.9l45.3 26v52.8z"/>
-          <path d="M57.6 51l-18 10.4v20.9l18 10.4 18-10.4V61.4L57.6 51zm7.8 26.6l-7.8 4.5-7.8-4.5v-9l7.8-4.5 7.8 4.5v9z"/>
+          <path d="M57.6 0L1.7 32.2v64.6L57.6 118l55.8-32.2V32.2L57.6 0zm45.3 90.7L57.6 106 12.3 90.7V37.9L57.6 11.9l45.3 26v52.8z" />
+          <path d="M57.6 51l-18 10.4v20.9l18 10.4 18-10.4V61.4L57.6 51zm7.8 26.6l-7.8 4.5-7.8-4.5v-9l7.8-4.5 7.8 4.5v9z" />
         </svg>
       </motion.div>
     </div>

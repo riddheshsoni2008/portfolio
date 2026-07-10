@@ -159,7 +159,7 @@ export default function Experience() {
 
         {/* Main Experience Layout */}
         <motion.div variants={itemVariants} className="flex flex-col lg:flex-row gap-6">
-          
+
           {/* Left: Tab Selector (IDE file tabs) */}
           <div className="lg:w-64 shrink-0">
             <div className="bg-[#0D1117] border border-gray-800 rounded-xl overflow-hidden">
@@ -179,11 +179,10 @@ export default function Experience() {
                     onClick={() => setActiveExp(idx)}
                     whileHover={{ x: 4 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`w-full text-left px-3 py-3 rounded-lg font-mono text-xs md:text-sm transition-all duration-300 flex items-center gap-3 mb-1 ${
-                      activeExp === idx
+                    className={`w-full text-left px-3 py-3 rounded-lg font-mono text-xs md:text-sm transition-all duration-300 flex items-center gap-3 mb-1 ${activeExp === idx
                         ? "bg-[#1d2433] text-[#61DAFB] border border-[#61DAFB]/30 shadow-[0_0_15px_rgba(97,218,251,0.1)]"
                         : "text-gray-500 hover:text-gray-300 hover:bg-[#161B22] border border-transparent"
-                    }`}
+                      }`}
                   >
                     <span className={`text-[10px] ${activeExp === idx ? "text-[#28C840]" : "text-gray-600"}`}>
                       {activeExp === idx ? "▶" : "▷"}
@@ -243,7 +242,7 @@ export default function Experience() {
                 </div>
 
                 {/* Code content */}
-                <div className="p-5 md:p-8 space-y-1">
+                <div className="p-3 sm:p-5 md:p-8 space-y-1 overflow-x-hidden">
                   {/* Line numbers gutter effect */}
                   <div className="space-y-3">
                     {/* Role */}
@@ -259,11 +258,11 @@ export default function Experience() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.1 }}
                     >
-                      <div className="flex items-start gap-3 font-mono text-[11px] md:text-[13px]">
+                      <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px]">
                         <span className="text-gray-700 shrink-0">02 |</span>
                         <div>
                           <span className="text-[#C678DD]">class </span>
-                          <span className="text-[#E5C07B] text-lg md:text-xl font-bold">
+                          <span className="text-[#E5C07B] text-xs sm:text-base md:text-xl font-bold break-words whitespace-normal">
                             {experiences[activeExp].role}
                           </span>
                           <span className="text-white"> {'{'}</span>
@@ -277,14 +276,14 @@ export default function Experience() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.2 }}
                     >
-                      <div className="flex items-start gap-3 font-mono text-[11px] md:text-[13px] pl-6">
+                      <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px] pl-3 sm:pl-6">
                         <span className="text-gray-700 shrink-0">03 |</span>
-                        <div>
+                        <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 overflow-hidden">
                           <span className="text-gray-500">{'// '}</span>
-                          <span className="text-[#79C0FF] font-semibold">@ {experiences[activeExp].company}</span>
-                          <span className="text-gray-600"> | </span>
-                          <span className="text-[#98C379]">{experiences[activeExp].period}</span>
-                          <span className="text-gray-600"> | </span>
+                          <span className="text-[#79C0FF] font-semibold whitespace-nowrap">@ {experiences[activeExp].company}</span>
+                          <span className="text-gray-600">|</span>
+                          <span className="text-[#98C379] whitespace-nowrap">{experiences[activeExp].period}</span>
+                          <span className="text-gray-600">|</span>
                           <motion.span
                             animate={
                               experiences[activeExp].status === "active"
@@ -292,11 +291,10 @@ export default function Experience() {
                                 : {}
                             }
                             transition={{ duration: 1.5, repeat: Infinity }}
-                            className={`px-2 py-0.5 rounded text-[9px] md:text-[10px] ${
-                              experiences[activeExp].status === "active"
+                            className={`px-1.5 py-0.5 rounded text-[8px] sm:text-[10px] whitespace-nowrap ${experiences[activeExp].status === "active"
                                 ? "bg-[#28C840]/20 text-[#28C840] border border-[#28C840]/30"
                                 : "bg-[#FEBC2E]/20 text-[#FEBC2E] border border-[#FEBC2E]/30"
-                            }`}
+                              }`}
                           >
                             {experiences[activeExp].duration}
                           </motion.span>
@@ -313,13 +311,13 @@ export default function Experience() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.3 }}
                     >
-                      <div className="flex items-start gap-3 font-mono text-[11px] md:text-[13px] pl-6">
+                      <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px] pl-3 sm:pl-6">
                         <span className="text-gray-700 shrink-0">05 |</span>
-                        <div>
+                        <div className="break-words whitespace-normal overflow-hidden max-w-full">
                           <span className="text-[#C678DD]">this</span>
                           <span className="text-white">.description</span>
                           <span className="text-[#56B6C2]"> = </span>
-                          <span className="text-[#98C379]">
+                          <span className="text-[#98C379] break-words whitespace-normal">
                             &quot;{experiences[activeExp].description}&quot;
                           </span>
                           <span className="text-gray-400">;</span>
@@ -336,7 +334,7 @@ export default function Experience() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.4 }}
                     >
-                      <div className="flex items-start gap-3 font-mono text-[11px] md:text-[13px] pl-6">
+                      <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px] pl-3 sm:pl-6">
                         <span className="text-gray-700 shrink-0">07 |</span>
                         <div>
                           <span className="text-[#C678DD]">this</span>
@@ -355,11 +353,11 @@ export default function Experience() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
                       >
-                        <div className="flex items-start gap-3 font-mono text-[11px] md:text-[13px] pl-12 group/item">
+                        <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px] pl-6 sm:pl-10 md:pl-12 group/item">
                           <span className="text-gray-700 shrink-0">
                             {String(8 + i).padStart(2, "0")} |
                           </span>
-                          <div className="flex items-start gap-2">
+                          <div className="flex items-start gap-1.5 break-words whitespace-normal overflow-hidden max-w-full">
                             <motion.span
                               animate={{ rotate: [0, 10, 0] }}
                               transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
@@ -367,7 +365,7 @@ export default function Experience() {
                             >
                               ▹
                             </motion.span>
-                            <span className="text-[#98C379] group-hover/item:text-[#61DAFB] transition-colors duration-300">
+                            <span className="text-[#98C379] group-hover/item:text-[#61DAFB] transition-colors duration-300 break-words whitespace-normal">
                               &quot;{h}&quot;
                               {i < experiences[activeExp].highlights.length - 1 && (
                                 <span className="text-gray-600">,</span>
@@ -384,7 +382,7 @@ export default function Experience() {
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.4, delay: 0.9 }}
                     >
-                      <div className="flex items-start gap-3 font-mono text-[11px] md:text-[13px] pl-6">
+                      <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px] pl-3 sm:pl-6">
                         <span className="text-gray-700 shrink-0">
                           {String(8 + experiences[activeExp].highlights.length).padStart(2, "0")} |
                         </span>
@@ -398,7 +396,7 @@ export default function Experience() {
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.4, delay: 1 }}
                     >
-                      <div className="flex items-start gap-3 font-mono text-[11px] md:text-[13px]">
+                      <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px]">
                         <span className="text-gray-700 shrink-0">
                           {String(9 + experiences[activeExp].highlights.length).padStart(2, "0")} |
                         </span>

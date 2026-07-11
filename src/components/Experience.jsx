@@ -165,7 +165,7 @@ export default function Experience() {
                   >
                     <span className={`text-[10px] ${activeExp === idx ? "text-[#28C840]" : "text-gray-600"}`}>
                       {activeExp === idx ? "▶" : "▷"}
-                    </span> 
+                    </span>
                     <div className="flex flex-col">
                       <span className="truncate">{exp.company.toLowerCase().replace(/\s+/g, "_")}.js</span>
                       {activeExp === idx && (
@@ -234,7 +234,7 @@ export default function Experience() {
                     >
                       <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px]">
                         <span className="text-gray-700 shrink-0">02 |</span>
-                        <div> 
+                        <div>
                           <span className="text-[#C678DD]">class </span>
                           <span className="text-[#E5C07B] text-xs sm:text-base md:text-xl font-bold break-words whitespace-normal">
                             {experiences[activeExp].role}

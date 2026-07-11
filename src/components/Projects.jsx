@@ -33,7 +33,7 @@ const projects = [
   {
     title: "LearnStack",
     description: "A comprehensive e-learning platform with real-time collaboration, hackathon management, and interactive dashboards.",
-    tech: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+    tech: ["Node.js", "MongoDB", "Tailwind CSS"],
     link: "https://learnstack-two.vercel.app",
     github: "https://github.com/riddheshsoni2008/LearnStack",
     color: "bg-gradient-to-br from-[#0f172a] to-[#1e3a8a]",
@@ -44,7 +44,7 @@ const projects = [
   {
     title: "Returno",
     description: "A digital wallet and rewards platform for collecting stamps and unlocking milestones at partner shops.",
-    tech: ["React", "Node.js", "Express", "MongoDB"],
+    tech: ["Node.js", "Express", "MongoDB"],
     link: "https://returno-eight.vercel.app",
     github: "https://github.com/riddheshsoni2008/Returno",
     color: "bg-gradient-to-br from-[#1e3a8a] to-[#172554]",
@@ -55,7 +55,7 @@ const projects = [
   {
     title: "Portfolio Website",
     description: "High-end developer portfolio with smooth animations, dynamic scroll effects, and modern GenZ aesthetic.",
-    tech: ["Next.js", "React", "CSS", "JavaScript"],
+    tech: ["Next.js", "CSS", "JavaScript"],
     link: "#",
     github: "https://github.com/riddheshsoni2008/portfolio",
     color: "bg-gradient-to-br from-[#2e1065] to-[#4c1d95]",
@@ -66,7 +66,7 @@ const projects = [
   {
     title: "Cricket Fantasy Game",
     description: "A fantasy sports web application where users can create custom cricket teams, manage players, and compete in virtual leagues.",
-    tech: ["React", "Node.js", "Express", "MongoDB"],
+    tech: ["JavaScript", "HTML5", "CSS3"],
     link: "http://127.0.0.1:5500/index.html",
     github: "https://github.com/riddheshsoni2008/cricket-fantasy-game",
     color: "bg-gradient-to-br from-[#064e3b] to-[#047857]",
@@ -151,34 +151,42 @@ export default function Projects() {
                   {/* Content Split */}
                   <div className="flex flex-col md:flex-row flex-1 overflow-hidden z-10">
                     {/* Left side: Sleek Glassmorphic Browser Mockup */}
-                    <div className={`hidden md:flex md:w-5/12 h-full ${projects[activeIndex].color} flex-col items-center justify-center relative overflow-hidden group border-r border-gray-800 p-6`}>
-                      {/* Animated Background Mesh */}
-                      <div className="absolute inset-0 opacity-10 group-hover:opacity-15 transition-opacity duration-700" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.8) 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
-
-                      {/* Glowing backlights */}
-                      <div className="absolute w-[200px] h-[200px] bg-blue-500/20 rounded-full blur-3xl -top-10 -left-10 pointer-events-none group-hover:bg-blue-500/30 transition-all duration-700" />
-                      <div className="absolute w-[200px] h-[200px] bg-purple-500/10 rounded-full blur-3xl -bottom-10 -right-10 pointer-events-none group-hover:bg-purple-500/25 transition-all duration-700" />
+                    <div className={`hidden md:flex md:w-5/12 h-full ${projects[activeIndex].color} flex-col items-center justify-center relative overflow-hidden group border-r border-gray-800 p-8`} style={{ perspective: "1200px" }}>
+                      {/* Animated Background Mesh & Ambient Glow */}
+                      <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-1000" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.8) 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
+                      
+                      {/* Dynamic Pulsing Backlights */}
+                      <motion.div 
+                        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute w-[250px] h-[250px] bg-blue-500/20 rounded-full blur-[60px] -top-10 -left-10 pointer-events-none" 
+                      />
+                      <motion.div 
+                        animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
+                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                        className="absolute w-[250px] h-[250px] bg-purple-500/20 rounded-full blur-[60px] -bottom-10 -right-10 pointer-events-none" 
+                      />
 
                       {/* Browser Frame */}
                       <motion.div
                         key={`mockup-${activeIndex}`}
-                        initial={{ opacity: 0, scale: 0.92, rotateY: 10, y: 15 }}
-                        animate={{ opacity: 1, scale: 1, rotateY: 0, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.92, rotateY: -10, y: -15 }}
-                        transition={{ type: "spring", stiffness: 100, damping: 18 }}
-                        className="relative w-full h-[320px] rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#0D1117]/80 backdrop-blur-md flex flex-col group/browser"
-                        style={{ perspective: "1000px" }}
+                        initial={{ opacity: 0, scale: 0.9, rotateY: 15, rotateX: -5, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, rotateY: 0, rotateX: 0, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.9, rotateY: -15, rotateX: 5, y: -20 }}
+                        whileHover={{ scale: 1.02, rotateY: -4, rotateX: 2, y: -5, boxShadow: "0 30px 60px -15px rgba(0,0,0,0.6), 0 0 40px rgba(255,255,255,0.1)" }}
+                        transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                        className="relative w-full h-[320px] rounded-xl overflow-hidden border border-white/15 shadow-2xl bg-[#0D1117]/80 backdrop-blur-xl flex flex-col group/browser z-10"
                       >
                         {/* Browser Window Header */}
-                        <div className="flex items-center justify-between px-4 py-2.5 bg-[#161B22] border-b border-gray-800/80 shrink-0">
+                        <div className="flex items-center justify-between px-4 py-2.5 bg-gradient-to-r from-[#161B22] to-[#1F242C] border-b border-gray-700/80 shrink-0">
                           <div className="flex gap-1.5 shrink-0">
-                            <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
-                            <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-                            <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
+                            <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] shadow-[0_0_5px_#FF5F56]" />
+                            <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] shadow-[0_0_5px_#FFBD2E]" />
+                            <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F] shadow-[0_0_5px_#27C93F]" />
                           </div>
 
-                          <div className="flex-1 max-w-[75%] mx-auto bg-[#0D1117] border border-gray-800/60 rounded-md px-3 py-1 text-[9px] font-mono text-gray-400 text-center truncate flex items-center justify-center gap-1.5 select-none">
-                            <span className="text-emerald-500 text-[10px] leading-none">🔒</span>
+                          <div className="flex-1 max-w-[75%] mx-auto bg-black/40 border border-white/5 rounded-md px-3 py-1 text-[9px] font-mono text-gray-300 text-center truncate flex items-center justify-center gap-1.5 select-none shadow-inner">
+                            <span className="text-emerald-400 text-[10px] leading-none">🔒</span>
                             <span className="truncate">{projects[activeIndex].link !== "#" ? projects[activeIndex].link.replace(/https?:\/\//, "") : "localhost:3000"}</span>
                           </div>
 
@@ -186,11 +194,11 @@ export default function Projects() {
                         </div>
 
                         {/* Browser Screen / Video view */}
-                        <div className="flex-1 relative overflow-hidden bg-[#0D1117]/50">
+                        <div className="flex-1 relative overflow-hidden bg-black">
                           <img
                             src={projects[activeIndex].video}
                             alt={`${projects[activeIndex].title} video demo`}
-                            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/browser:scale-[1.03]"
+                            className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover/browser:scale-[1.05]"
                             onError={(e) => {
                               // Fallback to static image if video fails to load
                               e.target.src = projects[activeIndex].image;
@@ -198,19 +206,56 @@ export default function Projects() {
                           />
 
                           {/* Video Recording Badge */}
-                          <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded border border-white/10 flex items-center gap-1.5 z-10 pointer-events-none">
+                          <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 flex items-center gap-2 z-10 pointer-events-none shadow-lg">
                             <motion.div
-                              animate={{ opacity: [1, 0.4, 1] }}
-                              transition={{ duration: 2, repeat: Infinity }}
-                              className="w-1.5 h-1.5 rounded-full bg-red-500"
+                              animate={{ opacity: [1, 0.2, 1] }}
+                              transition={{ duration: 1.5, repeat: Infinity }}
+                              className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]"
                             />
-                            <span className="text-[9px] font-mono text-gray-300 font-medium">LIVE DEMO</span>
+                            <span className="text-[9px] font-mono text-white font-semibold tracking-wider">LIVE DEMO</span>
                           </div>
 
                           {/* Glossy Overlay Reflection */}
-                          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none z-0" />
+                          <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.05] via-transparent to-white/[0.02] pointer-events-none z-0" />
+                          <div className="absolute inset-0 opacity-0 group-hover/browser:opacity-100 bg-gradient-to-b from-transparent via-transparent to-black/20 pointer-events-none transition-opacity duration-700" />
                         </div>
                       </motion.div>
+                      
+                      {/* Zero-Gravity Floating Tech Names */}
+                      {projects[activeIndex].tech.map((tech, i) => {
+                        const floatConfig = [
+                          { x: [0, 8, -4, 0], y: [0, -15, -8, 0], top: '6%', left: '3%', dur: 6, delay: 0 },
+                          { x: [0, -6, 10, 0], y: [0, 10, -5, 0], top: '10%', right: '3%', dur: 7, delay: 0.5 },
+                          { x: [0, 10, -4, 0], y: [0, -6, 12, 0], bottom: '8%', left: '5%', dur: 5.5, delay: 1 },
+                          { x: [0, -8, 5, 0], y: [0, 8, -10, 0], bottom: '6%', right: '5%', dur: 6.5, delay: 1.5 },
+                        ];
+                        const cfg = floatConfig[i % 4];
+                        const posStyle = {};
+                        if (cfg.top) posStyle.top = cfg.top;
+                        if (cfg.bottom) posStyle.bottom = cfg.bottom;
+                        if (cfg.left) posStyle.left = cfg.left;
+                        if (cfg.right) posStyle.right = cfg.right;
+
+                        return (
+                          <motion.div
+                            key={`tech-${activeIndex}-${i}`}
+                            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+                            animate={{ opacity: [0, 0.9, 0.7, 0.9], scale: 1, x: cfg.x, y: cfg.y }}
+                            transition={{
+                              opacity: { duration: 1.5, delay: cfg.delay },
+                              scale: { duration: 0.8, delay: cfg.delay, type: "spring" },
+                              x: { duration: cfg.dur, repeat: Infinity, ease: "easeInOut", delay: cfg.delay },
+                              y: { duration: cfg.dur, repeat: Infinity, ease: "easeInOut", delay: cfg.delay }
+                            }}
+                            style={posStyle}
+                            className="absolute bg-[#0D1117]/80 backdrop-blur-xl px-3 py-1.5 rounded-lg border border-white/20 font-mono text-[10px] z-20 whitespace-nowrap shadow-[0_0_20px_rgba(0,0,0,0.5)] group-hover:border-white/40 transition-colors duration-500"
+                          >
+                            <span className="text-[#C678DD]">{'<'}</span>
+                            <span className="text-white font-semibold">{tech}</span>
+                            <span className="text-[#C678DD]">{' />'}</span>
+                          </motion.div>
+                        );
+                      })}
                     </div>
 
                     {/* Right side: Content - Full width on Mobile */}

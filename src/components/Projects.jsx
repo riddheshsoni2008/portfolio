@@ -33,35 +33,35 @@ const projects = [
   {
     title: "LearnStack",
     description: "A comprehensive e-learning platform with real-time collaboration, hackathon management, and interactive dashboards.",
-    tech: ["Node.js", "MongoDB", "Tailwind CSS"],
+    tech: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
     link: "https://learnstack-two.vercel.app",
     github: "https://github.com/riddheshsoni2008/LearnStack",
     color: "bg-gradient-to-br from-[#0f172a] to-[#1e3a8a]",
     shortName: "LS",
     image: "/learnstack.png",
-    video: "/api/video?project=learnstack&t=1"
+    video: "/learnstack_demo_1783755235723.webp"
   },
   {
     title: "Returno",
     description: "A digital wallet and rewards platform for collecting stamps and unlocking milestones at partner shops.",
-    tech: ["Node.js", "Express", "MongoDB"],
+    tech: ["React", "Node.js", "Express", "MongoDB"],
     link: "https://returno-eight.vercel.app",
     github: "https://github.com/riddheshsoni2008/Returno",
     color: "bg-gradient-to-br from-[#1e3a8a] to-[#172554]",
     shortName: "RT",
     image: "/returno.png",
-    video: "/api/video?project=returno&t=1"
+    video: "/returno_demo_1783755379546.webp"
   },
   {
     title: "Portfolio Website",
     description: "High-end developer portfolio with smooth animations, dynamic scroll effects, and modern GenZ aesthetic.",
-    tech: ["Next.js", "CSS", "JavaScript"],
+    tech: ["Next.js", "React", "CSS", "JavaScript"],
     link: "#",
     github: "https://github.com/riddheshsoni2008/portfolio",
     color: "bg-gradient-to-br from-[#2e1065] to-[#4c1d95]",
     shortName: "PW",
     image: "/portfolio_site.png",
-    video: "/api/video?project=portfolio&t=1"
+    video: "/portfolio_demo_1783755754344.webp"
   },
   {
     title: "Cricket Fantasy Game",
@@ -72,7 +72,7 @@ const projects = [
     color: "bg-gradient-to-br from-[#064e3b] to-[#047857]",
     shortName: "CF",
     image: "/cricket.png",
-    video: "/api/video?project=cricket_demo_local&t=1"
+    video: "/cricket_demo_local_1783760973782.webp"
   }
 ];
 
@@ -154,17 +154,17 @@ export default function Projects() {
                     <div className={`hidden md:flex md:w-5/12 h-full ${projects[activeIndex].color} flex-col items-center justify-center relative overflow-hidden group border-r border-gray-800 p-8`} style={{ perspective: "1200px" }}>
                       {/* Animated Background Mesh & Ambient Glow */}
                       <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-1000" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.8) 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
-                      
+
                       {/* Dynamic Pulsing Backlights */}
-                      <motion.div 
+                      <motion.div
                         animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute w-[250px] h-[250px] bg-blue-500/20 rounded-full blur-[60px] -top-10 -left-10 pointer-events-none" 
+                        className="absolute w-[250px] h-[250px] bg-blue-500/20 rounded-full blur-[60px] -top-10 -left-10 pointer-events-none"
                       />
-                      <motion.div 
+                      <motion.div
                         animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
                         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                        className="absolute w-[250px] h-[250px] bg-purple-500/20 rounded-full blur-[60px] -bottom-10 -right-10 pointer-events-none" 
+                        className="absolute w-[250px] h-[250px] bg-purple-500/20 rounded-full blur-[60px] -bottom-10 -right-10 pointer-events-none"
                       />
 
                       {/* Browser Frame */}
@@ -220,7 +220,7 @@ export default function Projects() {
                           <div className="absolute inset-0 opacity-0 group-hover/browser:opacity-100 bg-gradient-to-b from-transparent via-transparent to-black/20 pointer-events-none transition-opacity duration-700" />
                         </div>
                       </motion.div>
-                      
+
                       {/* Zero-Gravity Floating Tech Names */}
                       {projects[activeIndex].tech.map((tech, i) => {
                         const floatConfig = [

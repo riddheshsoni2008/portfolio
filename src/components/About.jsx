@@ -75,13 +75,11 @@ export default function About() {
   const ideRotateX = useTransform(scrollYProgress, [0, 1], [25, 0]);
   const ideRotateY = useTransform(scrollYProgress, [0, 1], [-25, 0]);
   const ideZ = useTransform(scrollYProgress, [0, 1], [-150, 0]);
-  const ideOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   // Dynamic 3D Transforms for the Right side (Image)
   const imgRotateX = useTransform(scrollYProgress, [0, 1], [25, 0]);
   const imgRotateY = useTransform(scrollYProgress, [0, 1], [25, 0]);
   const imgZ = useTransform(scrollYProgress, [0, 1], [-150, 0]);
-  const imgOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -134,7 +132,6 @@ export default function About() {
                 rotateX: ideRotateX,
                 rotateY: ideRotateY,
                 z: ideZ,
-                opacity: ideOpacity,
                 transformStyle: "preserve-3d"
               }}
               className="relative"
@@ -170,7 +167,6 @@ export default function About() {
               rotateX: imgRotateX,
               rotateY: imgRotateY,
               z: imgZ,
-              opacity: imgOpacity,
               transformStyle: "preserve-3d"
             }}
             className="flex justify-center items-center relative order-first lg:order-last mb-8 lg:mb-0"

@@ -26,7 +26,7 @@ const skillCategories = [
     skills: ["Git", "Vercel", "Linux", "Windows", "Ubuntu", "render", "CI/CD"],
   },
   {
-    title: "AI Tools.config",
+    title: "AITools.config",
     color: "#8e0d93", // Gemini/Gemini Purple
     skills: ["ChatGPT", "Gemini", "GitHub Copilot", "Claude", "Antigravity", "Stitch", "Kiro"],
   }
@@ -119,11 +119,13 @@ export default function Skills() {
                 y: -8,
                 rotateX: 4,
                 rotateY: -4,
-                boxShadow: `0px 20px 40px -10px ${category.color}35`,
-                borderColor: category.color
               }}
               key={category.title}
-              className="bg-[#0D1117] rounded-xl overflow-hidden border border-gray-800 transition-all duration-300 flex flex-col h-full"
+              className="bg-[#0D1117] rounded-xl overflow-hidden border border-gray-800 transition-all duration-300 flex flex-col h-full hover:border-[var(--hover-color)] hover:shadow-[0_20px_40px_-10px_var(--shadow-color)]"
+              style={{
+                "--hover-color": category.color,
+                "--shadow-color": `${category.color}35`
+              }}
             >
               {/* Terminal Header */}
               <div className="flex items-center justify-between px-4 py-3 bg-[#161B22] border-b border-gray-800 shrink-0">
@@ -142,14 +144,15 @@ export default function Skills() {
 
               {/* Code Content */}
               <div className="p-5 font-mono text-[12px] sm:text-[13px] leading-loose flex-grow overflow-x-auto text-gray-300 select-none">
-                <span className="text-[#FF7B72]">export const</span> <span className="text-[#79C0FF]">{category.title.split('.')[0]}</span> <span className="text-[#FF7B72]">=</span> {'['}
+                <span className="text-[#FF7B72]">export const</span> <span className="text-[#79C0FF]">{category.title.split('.')[0].replace(/\s+/g, '')}</span> <span className="text-[#FF7B72]">=</span> {'['}
 
                 <div className="pl-4 border-l border-gray-800/80 ml-1.5 my-2 space-y-1 flex flex-col">
                   {category.skills.map((skill, index) => (
                     <motion.div
                       key={skill}
-                      whileHover={{ x: 4, color: category.color }}
-                      className="transition-all duration-200 cursor-default"
+                      whileHover={{ x: 4 }}
+                      className="transition-all duration-200 cursor-default hover:text-[var(--hover-color)]"
+                      style={{ "--hover-color": category.color }}
                     >
                       <span className="text-[#A5D6FF]">"{skill.trim()}"</span>
                       {index < category.skills.length - 1 && <span className="text-gray-500">,</span>}

@@ -1,22 +1,23 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, memo } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
+import SectionHeader from "./SectionHeader";
 
-// Floating code background for the experience section
-const FloatingExpBg = () => {
-  const codeSnippets = [
-    { text: "git commit -m 'shipped'", x: "8%", y: "12%", dur: 7, delay: 0 },
-    { text: "const career = [];", x: "78%", y: "8%", dur: 8, delay: 1 },
-    { text: "career.push(exp);", x: "85%", y: "55%", dur: 6, delay: 2 },
-    { text: "// 1yr+ experience", x: "5%", y: "70%", dur: 9, delay: 0.5 },
-    { text: "export default dev;", x: "70%", y: "85%", dur: 7, delay: 1.5 },
-    { text: "npm run build", x: "15%", y: "45%", dur: 8, delay: 3 },
-  ];
+const CODE_SNIPPETS_CONFIG = [
+  { text: "git commit -m 'shipped'", x: "8%", y: "12%", dur: 7, delay: 0 },
+  { text: "const career = [];", x: "78%", y: "8%", dur: 8, delay: 1 },
+  { text: "career.push(exp);", x: "85%", y: "55%", dur: 6, delay: 2 },
+  { text: "// 1yr+ experience", x: "5%", y: "70%", dur: 9, delay: 0.5 },
+  { text: "export default dev;", x: "70%", y: "85%", dur: 7, delay: 1.5 },
+  { text: "npm run build", x: "15%", y: "45%", dur: 8, delay: 3 },
+];
 
+// Floating code background for the experience section (Memoized for performance)
+const FloatingExpBg = memo(() => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-      {codeSnippets.map((snippet, i) => (
+      {CODE_SNIPPETS_CONFIG.map((snippet, i) => (
         <motion.span
           key={i}
           initial={{ opacity: 0 }}
@@ -39,7 +40,9 @@ const FloatingExpBg = () => {
       ))}
     </div>
   );
-};
+});
+
+FloatingExpBg.displayName = "FloatingExpBg";
 
 const experiences = [
   {
@@ -77,19 +80,6 @@ const experiences = [
   },
 ];
 
-// Terminal-style typing component
-const TerminalLine = ({ prefix, text, color, delay, inView }) => (
-  <motion.div
-    initial={{ opacity: 0, x: -20 }}
-    animate={inView ? { opacity: 1, x: 0 } : {}}
-    transition={{ duration: 0.4, delay }}
-    className="flex items-start gap-2 font-mono text-[11px] md:text-[13px] leading-relaxed"
-  >
-    <span className={`shrink-0 ${color}`}>{prefix}</span>
-    <span className="text-gray-300">{text}</span>
-  </motion.div>
-);
-
 export default function Experience() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -125,18 +115,7 @@ export default function Experience() {
         className="max-w-[1280px] mx-auto px-[24px] md:px-[64px] relative z-10"
       >
         {/* Section Header */}
-        <motion.div variants={itemVariants} className="flex items-center gap-2 md:gap-4 mb-16 md:mb-20">
-          <span className="label-mono text-[var(--color-tech-blue)]">04.</span>
-          <h2 className="headline-lg text-[var(--color-primary)] font-sans flex items-center whitespace-nowrap">
-            &lt;Experience&nbsp;/&gt;
-            <motion.span
-              animate={{ opacity: [1, 0, 1] }}
-              transition={{ duration: 1, repeat: Infinity }}
-              className="ml-2 w-3 h-8 md:h-10 bg-[var(--color-tech-blue)] inline-block"
-            />
-          </h2>
-          <div className="hidden sm:block flex-1 h-px bg-[var(--color-outline-variant)] ml-4" />
-        </motion.div>
+        <SectionHeader number="04." title="Experience" />
 
         {/* Subtitle */}
         <motion.div variants={itemVariants} className="mb-12 md:mb-16">
@@ -165,7 +144,7 @@ export default function Experience() {
             <div className="bg-[#0D1117] border border-gray-800 rounded-xl overflow-hidden">
               {/* Tab header */}
               <div className="px-4 py-3 border-b border-gray-800 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-[#FF5F57]" />
+                <div className="w-2 h-2 rounded-full bg-[#FF5F56]" />
                 <div className="w-2 h-2 rounded-full bg-[#FEBC2E]" />
                 <div className="w-2 h-2 rounded-full bg-[#28C840]" />
                 <span className="ml-2 font-mono text-[10px] text-gray-500">EXPLORER</span>
@@ -219,7 +198,7 @@ export default function Experience() {
                 {/* IDE top bar */}
                 <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-800 bg-[#161B22]">
                   <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
+                    <div className="w-3 h-3 rounded-full bg-[#FF5F56]" />
                     <div className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
                     <div className="w-3 h-3 rounded-full bg-[#28C840]" />
                   </div>
@@ -243,7 +222,6 @@ export default function Experience() {
 
                 {/* Code content */}
                 <div className="p-3 sm:p-5 md:p-8 space-y-1 overflow-x-hidden">
-                  {/* Line numbers gutter effect */}
                   <div className="space-y-3">
                     {/* Role */}
                     <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px]">

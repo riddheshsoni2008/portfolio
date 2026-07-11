@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
+import SectionHeader from "./SectionHeader";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -131,18 +132,7 @@ export default function Contact() {
         className="max-w-[1280px] mx-auto px-[24px] md:px-[64px] relative z-10"
       >
         {/* Section Header */}
-        <motion.div variants={itemVariants} className="flex items-center gap-2 md:gap-4 mb-16">
-          <span className="label-mono text-[var(--color-tech-blue)]">05.</span>
-          <h2 className="headline-lg text-[var(--color-primary)] font-sans flex items-center whitespace-nowrap">
-            &lt;GetInTouch&nbsp;/&gt;
-            <motion.span
-              animate={{ opacity: [1, 0, 1] }}
-              transition={{ duration: 1, repeat: Infinity }}
-              className="ml-2 w-3 h-8 md:h-10 bg-[var(--color-tech-blue)] inline-block"
-            />
-          </h2>
-          <div className="hidden sm:block flex-1 h-px bg-[var(--color-outline-variant)] ml-4" />
-        </motion.div>
+        <SectionHeader number="05." title="GetInTouch" />
 
         {/* Info text */}
         <motion.div variants={itemVariants} className="max-w-xl mb-12">

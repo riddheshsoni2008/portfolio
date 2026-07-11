@@ -1,20 +1,22 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, memo } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import SectionHeader from "./SectionHeader";
 
-const FloatingProjectBg = () => {
-  const elements = [
-    { text: "git commit -m 'deploy'", left: "10%", top: "15%", duration: 25 },
-    { text: "npm run build", left: "75%", top: "85%", duration: 20 },
-    { text: "await fetch('/api/data')", left: "80%", top: "25%", duration: 28 },
-    { text: "<Component />", left: "5%", top: "75%", duration: 22 },
-    { text: "{ status: 200 }", left: "60%", top: "10%", duration: 26 },
-  ];
+const BG_ELEMENTS_CONFIG = [
+  { text: "git commit -m 'deploy'", left: "10%", top: "15%", duration: 25 },
+  { text: "npm run build", left: "75%", top: "85%", duration: 20 },
+  { text: "await fetch('/api/data')", left: "80%", top: "25%", duration: 28 },
+  { text: "<Component />", left: "5%", top: "75%", duration: 22 },
+  { text: "{ status: 200 }", left: "60%", top: "10%", duration: 26 },
+];
 
+// Memoized background animation to prevent re-renders when parent activeIndex changes
+const FloatingProjectBg = memo(() => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0">
-      {elements.map((el, i) => (
+      {BG_ELEMENTS_CONFIG.map((el, i) => (
         <motion.div
           key={i}
           animate={{ y: [0, -40, 0], opacity: [0.1, 0.3, 0.1] }}
@@ -27,7 +29,9 @@ const FloatingProjectBg = () => {
       ))}
     </div>
   );
-};
+});
+
+FloatingProjectBg.displayName = "FloatingProjectBg";
 
 const projects = [
   {
@@ -76,6 +80,13 @@ const projects = [
   }
 ];
 
+const FLOAT_CONFIGS = [
+  { x: [0, 8, -4, 0], y: [0, -15, -8, 0], top: '6%', left: '3%', dur: 6, delay: 0 },
+  { x: [0, -6, 10, 0], y: [0, 10, -5, 0], top: '10%', right: '3%', dur: 7, delay: 0.5 },
+  { x: [0, 10, -4, 0], y: [0, -6, 12, 0], bottom: '8%', left: '5%', dur: 5.5, delay: 1 },
+  { x: [0, -8, 5, 0], y: [0, 8, -10, 0], bottom: '6%', right: '5%', dur: 6.5, delay: 1.5 },
+];
+
 export default function Projects() {
   const containerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -105,17 +116,7 @@ export default function Projects() {
 
           {/* Header */}
           <div className="w-full max-w-[1280px] mx-auto px-[24px] md:px-[64px] z-20 mb-6 md:mb-10 mt-8 md:mt-0">
-            <div className="flex items-center gap-2 md:gap-4 mb-2">
-              <span className="label-mono text-[var(--color-tech-blue)]">03.</span>
-              <h2 className="headline-lg text-[var(--color-primary)] font-sans flex items-center whitespace-nowrap">
-                &lt;Projects&nbsp;/&gt;
-                <motion.span
-                  animate={{ opacity: [1, 0, 1] }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                  className="ml-2 w-3 h-8 md:h-10 bg-[var(--color-tech-blue)] inline-block"
-                />
-              </h2>
-            </div>
+            <SectionHeader number="03." title="Projects" />
             <p className="body-lg text-[var(--color-on-surface-variant)] max-w-2xl font-mono text-xs sm:text-sm md:text-base mt-2 md:mt-4">
               <span className="text-[#3b82f6]">const</span> <span className="text-[#eab308]">scrollDown</span> = <span className="text-[#a855f7]">() =&gt;</span> viewWork();
             </p>
@@ -223,13 +224,7 @@ export default function Projects() {
 
                       {/* Zero-Gravity Floating Tech Names */}
                       {projects[activeIndex].tech.map((tech, i) => {
-                        const floatConfig = [
-                          { x: [0, 8, -4, 0], y: [0, -15, -8, 0], top: '6%', left: '3%', dur: 6, delay: 0 },
-                          { x: [0, -6, 10, 0], y: [0, 10, -5, 0], top: '10%', right: '3%', dur: 7, delay: 0.5 },
-                          { x: [0, 10, -4, 0], y: [0, -6, 12, 0], bottom: '8%', left: '5%', dur: 5.5, delay: 1 },
-                          { x: [0, -8, 5, 0], y: [0, 8, -10, 0], bottom: '6%', right: '5%', dur: 6.5, delay: 1.5 },
-                        ];
-                        const cfg = floatConfig[i % 4];
+                        const cfg = FLOAT_CONFIGS[i % FLOAT_CONFIGS.length];
                         const posStyle = {};
                         if (cfg.top) posStyle.top = cfg.top;
                         if (cfg.bottom) posStyle.bottom = cfg.bottom;

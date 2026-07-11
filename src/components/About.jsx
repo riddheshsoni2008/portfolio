@@ -1,23 +1,25 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, memo } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import SectionHeader from "./SectionHeader";
 
-const FloatingCodeBackground = () => {
-  const codeSnippets = [
-    { text: "<coder />", hoverText: "Role: Full-Stack Developer", left: "10%", top: "20%", duration: 25, delay: 0, size: "1.2rem", color: "#E34F26" },
-    { text: "{ stack: 'MERN' }", hoverText: "MongoDB, Express, React, Node.js", left: "70%", top: "80%", duration: 22, delay: 2, size: "1.5rem", color: "#149ECA" },
-    { text: "console.log('me');", hoverText: "Tech: React, Node, Next.js, Tailwind, JS", left: "80%", top: "15%", duration: 28, delay: 5, size: "1rem", color: "#D4B830" },
-    { text: "while(alive) code();", hoverText: "Passion: Building Scalable Web Apps", left: "5%", top: "70%", duration: 30, delay: 1, size: "1.1rem", color: "#339933" },
-    { text: "git push origin riddhesh-coder", hoverText: "Deploying high-quality code daily", left: "40%", top: "85%", duration: 20, delay: 4, size: "1.4rem", color: "#F05032" },
-    { text: "npm run start", hoverText: "Booting up creative solutions", left: "50%", top: "10%", duration: 26, delay: 3, size: "1.3rem", color: "#CB3837" },
-    { text: "<!-- logic -->", hoverText: "Focus: Clean Architecture & UI/UX", left: "85%", top: "50%", duration: 24, delay: 6, size: "1.6rem", color: "#6A9955" },
-    { text: "javascript", hoverText: "Core Strength: Modern JS Ecosystem", left: "15%", top: "45%", duration: 27, delay: 2, size: "1rem", color: "#D4B830" }
-  ];
+const CODE_SNIPPETS_CONFIG = [
+  { text: "<coder />", hoverText: "Role: Full-Stack Developer", left: "10%", top: "20%", duration: 25, delay: 0, size: "1.2rem", color: "#E34F26" },
+  { text: "{ stack: 'MERN' }", hoverText: "MongoDB, Express, React, Node.js", left: "70%", top: "80%", duration: 22, delay: 2, size: "1.5rem", color: "#149ECA" },
+  { text: "console.log('me');", hoverText: "Tech: React, Node, Next.js, Tailwind, JS", left: "80%", top: "15%", duration: 28, delay: 5, size: "1rem", color: "#D4B830" },
+  { text: "while(alive) code();", hoverText: "Passion: Building Scalable Web Apps", left: "5%", top: "70%", duration: 30, delay: 1, size: "1.1rem", color: "#339933" },
+  { text: "git push origin riddhesh-coder", hoverText: "Deploying high-quality code daily", left: "40%", top: "85%", duration: 20, delay: 4, size: "1.4rem", color: "#F05032" },
+  { text: "npm run start", hoverText: "Booting up creative solutions", left: "50%", top: "10%", duration: 26, delay: 3, size: "1.3rem", color: "#CB3837" },
+  { text: "<!-- logic -->", hoverText: "Focus: Clean Architecture & UI/UX", left: "85%", top: "50%", duration: 24, delay: 6, size: "1.6rem", color: "#6A9955" },
+  { text: "javascript", hoverText: "Core Strength: Modern JS Ecosystem", left: "15%", top: "45%", duration: 27, delay: 2, size: "1rem", color: "#D4B830" }
+];
 
+// Memoized code snippets background to prevent unnecessary re-renders
+const FloatingCodeBackground = memo(() => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0">
-      {codeSnippets.map((snippet, i) => (
+      {CODE_SNIPPETS_CONFIG.map((snippet, i) => (
         <motion.div
           key={i}
           animate={{
@@ -55,7 +57,9 @@ const FloatingCodeBackground = () => {
       ))}
     </div>
   );
-};
+});
+
+FloatingCodeBackground.displayName = "FloatingCodeBackground";
 
 export default function About() {
   const sectionRef = useRef(null);
@@ -109,19 +113,8 @@ export default function About() {
         animate={isInView ? "visible" : "hidden"}
         className="max-w-[1280px] mx-auto px-[24px] md:px-[64px] relative z-10"
       >
-        {/* Section Header */}
-        <motion.div variants={itemVariants} className="flex items-center gap-3 md:gap-4 mb-12 md:mb-16">
-          <span className="label-mono text-[var(--color-tech-blue)] shrink-0">01.</span>
-          <h2 className="headline-lg text-[28px] sm:text-[36px] md:text-5xl text-[var(--color-primary)] font-sans flex items-center shrink-0 whitespace-nowrap">
-            &lt;AboutMe&nbsp;/&gt;
-            <motion.span
-              animate={{ opacity: [1, 0, 1] }}
-              transition={{ duration: 1, repeat: Infinity }}
-              className="ml-2 w-2 h-6 md:w-3 md:h-8 lg:h-10 bg-[var(--color-tech-blue)] inline-block shrink-0"
-            />
-          </h2>
-          <div className="hidden sm:block flex-1 h-px bg-[var(--color-outline-variant)] ml-4" />
-        </motion.div>
+        {/* Reusable Section Header */}
+        <SectionHeader number="01." title="AboutMe" />
 
         <div className="grid lg:grid-cols-2 gap-16 items-center" style={{ perspective: "1200px" }}>
           {/* Left: Text & IDE */}

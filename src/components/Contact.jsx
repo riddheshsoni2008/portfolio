@@ -133,7 +133,7 @@ export default function Contact() {
         {/* Section Header */}
         <motion.div variants={itemVariants} className="flex items-center gap-2 md:gap-4 mb-16">
           <span className="label-mono text-[var(--color-tech-blue)]">05.</span>
-          <h2 className="headline-lg text-[var(--color-primary)] font-mono flex items-center whitespace-nowrap">
+          <h2 className="headline-lg text-[var(--color-primary)] font-sans flex items-center whitespace-nowrap">
             &lt;GetInTouch&nbsp;/&gt;
             <motion.span
               animate={{ opacity: [1, 0, 1] }}
@@ -181,7 +181,7 @@ export default function Contact() {
                   </button>
                 </div>
               </div>
-              <span className="text-gray-600 hidden sm:inline">{activeTab === "message.json" ? "JSON" : "CONFIG"}</span>
+              <span className="text-gray-400 hidden sm:inline">{activeTab === "message.json" ? "JSON" : "CONFIG"}</span>
             </div>
 
             {/* Editor Body */}

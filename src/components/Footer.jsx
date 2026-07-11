@@ -23,7 +23,7 @@ export default function Footer() {
         </svg>
       ) 
     },
-    { 
+    {  
       name: "linkedin", 
       url: "https://www.linkedin.com/in/riddhesh-soni-32a94a336/", 
       username: "riddhesh-soni", 
@@ -108,7 +108,7 @@ export default function Footer() {
                   whileHover={{ x: 6, color: "#61DAFB" }}
                   className="flex items-center gap-3 text-xs text-gray-400 group cursor-pointer w-fit"
                 >
-                  <span className="text-gray-600 font-bold shrink-0">$ curl -I</span>
+                  <span className="text-gray-400 font-bold shrink-0">$ curl -I</span>
                   <span className="bg-[#161B22] border border-gray-800 px-2 py-1 rounded text-[#79C0FF] group-hover:border-[#61DAFB]/40 transition-colors duration-200">
                     {social.name}
                   </span>

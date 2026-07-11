@@ -3,42 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-const ScatterText = ({ text }) => {
-  const [hoverKey, setHoverKey] = useState(0);
 
-  return (
-    <span
-      className="flex cursor-pointer"
-      onMouseEnter={() => setHoverKey(prev => prev + 1)}
-    >
-      {text.split("").map((char, index) => {
-        // Deterministic pseudo-random starting positions to fix hydration error
-        const startX = Math.sin(index * 12.3) * 250;
-        const startY = Math.cos(index * 45.6) * 250;
-        const startRotate = Math.sin(index * 78.9) * 360;
-        const delayTime = Math.abs(Math.sin(index * 32.1)) * 0.15;
-
-        return (
-          <motion.span
-            key={`${hoverKey}-${index}`} // forces re-animation on hover
-            className="inline-block"
-            initial={{ x: startX, y: startY, rotate: startRotate, opacity: 0 }}
-            animate={{ x: 0, y: 0, rotate: 0, opacity: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 250,
-              damping: 12,
-              mass: 0.8,
-              delay: delayTime // deterministic delay for collision effect
-            }}
-          >
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-        );
-      })}
-    </span>
-  );
-};
 
 const navLinks = [
   { label: "About", href: "#about", color: "#47A248" }, // MongoDB Green
@@ -48,6 +13,7 @@ const navLinks = [
   { label: "Contact", href: "#contact", color: "#D4B830" }, // JS Yellow (darker for light mode visibility)
 ];
 
+const LOGO = "<RIDDHESH/>"
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -73,7 +39,7 @@ export default function Navbar() {
             className="label-mono font-bold text-[var(--color-primary)] hover:text-[var(--color-tech-blue)] transition-colors duration-300 flex items-center"
             style={{ fontSize: "16px" }}
           >
-            <ScatterText text="<RIDDHESH />" />
+            <h2> {LOGO} </h2>
           </a>
 
           {/* Desktop Links */}

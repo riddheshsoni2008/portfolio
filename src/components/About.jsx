@@ -112,7 +112,7 @@ export default function About() {
         {/* Section Header */}
         <motion.div variants={itemVariants} className="flex items-center gap-3 md:gap-4 mb-12 md:mb-16">
           <span className="label-mono text-[var(--color-tech-blue)] shrink-0">01.</span>
-          <h2 className="headline-lg text-[28px] sm:text-[36px] md:text-5xl text-[var(--color-primary)] font-mono flex items-center shrink-0 whitespace-nowrap">
+          <h2 className="headline-lg text-[28px] sm:text-[36px] md:text-5xl text-[var(--color-primary)] font-sans flex items-center shrink-0 whitespace-nowrap">
             &lt;AboutMe&nbsp;/&gt;
             <motion.span
               animate={{ opacity: [1, 0, 1] }}

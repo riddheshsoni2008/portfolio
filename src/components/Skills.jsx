@@ -106,7 +106,7 @@ export default function Skills() {
         {/* Section Header */}
         <motion.div variants={itemVariants} className="flex items-center gap-2 md:gap-4 mb-16 md:mb-20">
           <span className="label-mono text-[var(--color-tech-blue)]">02.</span>
-          <h2 className="headline-lg text-[var(--color-primary)] font-mono flex items-center whitespace-nowrap">
+          <h2 className="headline-lg text-[var(--color-primary)] font-sans flex items-center whitespace-nowrap">
             &lt;TechStack&nbsp;/&gt;
             <motion.span
               animate={{ opacity: [1, 0, 1] }}

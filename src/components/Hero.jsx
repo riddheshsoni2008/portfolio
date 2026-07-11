@@ -229,12 +229,12 @@ export default function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="display-lg text-[var(--color-on-surface)] mb-6 flex flex-col sm:flex-row sm:flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-x-4">
+          <h1 className="display-lg text-[var(--color-on-surface)] mb-6 flex flex-col items-center justify-center md:items-start md:justify-start gap-2 text-4xl md:text-5xl">
             <span>Hi, I&apos;m</span>
             <span className="text-[var(--color-primary)] drop-shadow-[0_0_15px_rgba(29,78,216,0.4)]">
               <Typewriter
                 options={{
-                  strings: ['Riddhesh', 'a Full-Stack Dev'],
+                  strings: ['Riddhesh', 'Full-Stack Dev'],
                   autoStart: true,
                   loop: true,
                   delay: 80,

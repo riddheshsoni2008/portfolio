@@ -127,7 +127,7 @@ export default function Experience() {
         {/* Section Header */}
         <motion.div variants={itemVariants} className="flex items-center gap-2 md:gap-4 mb-16 md:mb-20">
           <span className="label-mono text-[var(--color-tech-blue)]">04.</span>
-          <h2 className="headline-lg text-[var(--color-primary)] font-mono flex items-center whitespace-nowrap">
+          <h2 className="headline-lg text-[var(--color-primary)] font-sans flex items-center whitespace-nowrap">
             &lt;Experience&nbsp;/&gt;
             <motion.span
               animate={{ opacity: [1, 0, 1] }}
@@ -150,7 +150,7 @@ export default function Experience() {
             <span className="text-[#E5C07B]">e</span>{" "}
             <span className="text-[#C678DD]">={'>'}</span>{" "}
             <span className="text-[#E5C07B]">e</span>
-            <span className="text-white">.real</span>{" "}
+            <span className="text-[#E06C75]">.real</span>{" "}
             <span className="text-[#56B6C2]">===</span>{" "}
             <span className="text-[#D19A66]">true</span>
             <span className="text-gray-400">);</span>
@@ -180,20 +180,20 @@ export default function Experience() {
                     whileHover={{ x: 4 }}
                     whileTap={{ scale: 0.98 }}
                     className={`w-full text-left px-3 py-3 rounded-lg font-mono text-xs md:text-sm transition-all duration-300 flex items-center gap-3 mb-1 ${activeExp === idx
-                        ? "bg-[#1d2433] text-[#61DAFB] border border-[#61DAFB]/30 shadow-[0_0_15px_rgba(97,218,251,0.1)]"
-                        : "text-gray-500 hover:text-gray-300 hover:bg-[#161B22] border border-transparent"
+                      ? "bg-[#1d2433] text-[#61DAFB] border border-[#61DAFB]/30 shadow-[0_0_15px_rgba(97,218,251,0.1)]"
+                      : "text-gray-400 hover:text-gray-300 hover:bg-[#161B22] border border-transparent"
                       }`}
                   >
                     <span className={`text-[10px] ${activeExp === idx ? "text-[#28C840]" : "text-gray-600"}`}>
                       {activeExp === idx ? "▶" : "▷"}
-                    </span>
+                    </span> 
                     <div className="flex flex-col">
                       <span className="truncate">{exp.company.toLowerCase().replace(/\s+/g, "_")}.js</span>
                       {activeExp === idx && (
                         <motion.span
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
-                          className="text-[9px] text-gray-600 mt-0.5"
+                          className="text-[10px] text-gray-400 mt-0.5"
                         >
                           {exp.duration} • {exp.status === "active" ? "🟢 active" : "✅ completed"}
                         </motion.span>
@@ -223,7 +223,7 @@ export default function Experience() {
                     <div className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
                     <div className="w-3 h-3 rounded-full bg-[#28C840]" />
                   </div>
-                  <div className="flex-1 text-center font-mono text-[10px] md:text-xs text-gray-500">
+                  <div className="flex-1 text-center font-mono text-[10px] md:text-xs text-gray-400">
                     {experiences[activeExp].company.toLowerCase().replace(/\s+/g, "_")}.js — Experience
                   </div>
                   <div className="font-mono text-[10px] text-gray-600">
@@ -246,13 +246,9 @@ export default function Experience() {
                   {/* Line numbers gutter effect */}
                   <div className="space-y-3">
                     {/* Role */}
-                    <TerminalLine
-                      prefix="01 |"
-                      text=""
-                      color="text-gray-700"
-                      delay={0}
-                      inView={true}
-                    />
+                    <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px]">
+                      <span className="text-gray-700 shrink-0">01 |</span>
+                    </div>
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -260,7 +256,7 @@ export default function Experience() {
                     >
                       <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px]">
                         <span className="text-gray-700 shrink-0">02 |</span>
-                        <div>
+                        <div> 
                           <span className="text-[#C678DD]">class </span>
                           <span className="text-[#E5C07B] text-xs sm:text-base md:text-xl font-bold break-words whitespace-normal">
                             {experiences[activeExp].role}
@@ -276,14 +272,14 @@ export default function Experience() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.2 }}
                     >
-                      <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px] pl-3 sm:pl-6">
+                      <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px]">
                         <span className="text-gray-700 shrink-0">03 |</span>
-                        <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 overflow-hidden">
+                        <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 overflow-hidden pl-3 sm:pl-4 md:pl-6">
                           <span className="text-gray-500">{'// '}</span>
                           <span className="text-[#79C0FF] font-semibold whitespace-nowrap">@ {experiences[activeExp].company}</span>
-                          <span className="text-gray-600">|</span>
+                          <span className="text-gray-400">|</span>
                           <span className="text-[#98C379] whitespace-nowrap">{experiences[activeExp].period}</span>
-                          <span className="text-gray-600">|</span>
+                          <span className="text-gray-400">|</span>
                           <motion.span
                             animate={
                               experiences[activeExp].status === "active"
@@ -292,8 +288,8 @@ export default function Experience() {
                             }
                             transition={{ duration: 1.5, repeat: Infinity }}
                             className={`px-1.5 py-0.5 rounded text-[8px] sm:text-[10px] whitespace-nowrap ${experiences[activeExp].status === "active"
-                                ? "bg-[#28C840]/20 text-[#28C840] border border-[#28C840]/30"
-                                : "bg-[#FEBC2E]/20 text-[#FEBC2E] border border-[#FEBC2E]/30"
+                              ? "bg-[#28C840]/20 text-[#28C840] border border-[#28C840]/30"
+                              : "bg-[#FEBC2E]/20 text-[#FEBC2E] border border-[#FEBC2E]/30"
                               }`}
                           >
                             {experiences[activeExp].duration}
@@ -303,7 +299,9 @@ export default function Experience() {
                     </motion.div>
 
                     {/* Separator */}
-                    <TerminalLine prefix="04 |" text="" color="text-gray-700" delay={0.25} inView={true} />
+                    <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px]">
+                      <span className="text-gray-700 shrink-0">04 |</span>
+                    </div>
 
                     {/* Description */}
                     <motion.div
@@ -311,9 +309,9 @@ export default function Experience() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.3 }}
                     >
-                      <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px] pl-3 sm:pl-6">
+                      <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px]">
                         <span className="text-gray-700 shrink-0">05 |</span>
-                        <div className="break-words whitespace-normal overflow-hidden max-w-full">
+                        <div className="break-words whitespace-normal overflow-hidden max-w-full pl-3 sm:pl-4 md:pl-6">
                           <span className="text-[#C678DD]">this</span>
                           <span className="text-white">.description</span>
                           <span className="text-[#56B6C2]"> = </span>
@@ -326,7 +324,9 @@ export default function Experience() {
                     </motion.div>
 
                     {/* Separator */}
-                    <TerminalLine prefix="06 |" text="" color="text-gray-700" delay={0.35} inView={true} />
+                    <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px]">
+                      <span className="text-gray-700 shrink-0">06 |</span>
+                    </div>
 
                     {/* Highlights header */}
                     <motion.div
@@ -334,9 +334,9 @@ export default function Experience() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.4 }}
                     >
-                      <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px] pl-3 sm:pl-6">
+                      <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px]">
                         <span className="text-gray-700 shrink-0">07 |</span>
-                        <div>
+                        <div className="pl-3 sm:pl-4 md:pl-6">
                           <span className="text-[#C678DD]">this</span>
                           <span className="text-white">.achievements</span>
                           <span className="text-[#56B6C2]"> = </span>
@@ -353,11 +353,11 @@ export default function Experience() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
                       >
-                        <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px] pl-6 sm:pl-10 md:pl-12 group/item">
+                        <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px] group/item">
                           <span className="text-gray-700 shrink-0">
                             {String(8 + i).padStart(2, "0")} |
                           </span>
-                          <div className="flex items-start gap-1.5 break-words whitespace-normal overflow-hidden max-w-full">
+                          <div className="flex items-start gap-1.5 break-words whitespace-normal overflow-hidden max-w-full pl-6 sm:pl-8 md:pl-12">
                             <motion.span
                               animate={{ rotate: [0, 10, 0] }}
                               transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
@@ -382,11 +382,11 @@ export default function Experience() {
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.4, delay: 0.9 }}
                     >
-                      <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px] pl-3 sm:pl-6">
+                      <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px]">
                         <span className="text-gray-700 shrink-0">
                           {String(8 + experiences[activeExp].highlights.length).padStart(2, "0")} |
                         </span>
-                        <span className="text-[#E5C07B]">];</span>
+                        <span className="text-[#E5C07B] pl-3 sm:pl-4 md:pl-6">];</span>
                       </div>
                     </motion.div>
 
@@ -479,7 +479,7 @@ export default function Experience() {
                 <span className="text-[#E5C07B]">e4f5g6h</span> build: shipped 4+ production projects
               </div>
               <div>
-                <span className="text-[#E5C07B]">i7j8k9l</span> init: started MERN stack journey 🚀
+                <span className="text-[#E5C07B]">i7j8k9l</span> init: started MERN stack journey
               </div>
             </motion.div>
           </div>

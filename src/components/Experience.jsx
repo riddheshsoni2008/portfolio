@@ -224,7 +224,7 @@ export default function Experience() {
                 <div className="p-3 sm:p-5 md:p-8 space-y-1 overflow-x-hidden">
                   <div className="space-y-3">
                     {/* Role */}
-                    <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px]">
+                   <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px]">
                       <span className="text-gray-700 shrink-0">01 |</span>
                     </div>
                     <motion.div
@@ -421,7 +421,7 @@ export default function Experience() {
             </AnimatePresence>
           </div>
         </motion.div>
-
+ 
         {/* Bottom Terminal Output */}
         <motion.div
           variants={itemVariants}

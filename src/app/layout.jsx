@@ -15,7 +15,13 @@ export const metadata = {
   title: "Riddhesh | Full-Stack Developer",
   description:
     "Professional portfolio of Riddhesh — Full-Stack Developer specializing in React, Next.js, Node.js, and modern web technologies.",
-  keywords: ["Full-Stack Developer", "React", "Next.js", "Node.js", "Portfolio"],
+  keywords: [
+    "Full-Stack Developer",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Portfolio",
+  ],
 };
 
 export default function RootLayout({ children }) {

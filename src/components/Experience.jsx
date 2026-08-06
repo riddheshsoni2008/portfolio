@@ -71,7 +71,8 @@ const experiences = [
     description:
       "Building full-stack web applications independently using the MERN stack. Focused on creating scalable, performant solutions with modern UI/UX and deploying them to production.",
     highlights: [
-      "Built 4+ production-ready full-stack applications",
+      "Built 5+ production-ready full-stack applications",
+      "Developed AI Resume Builder & ATS Checker with Gemini AI scoring engine",
       "Developed LearnStack — an e-learning platform with hackathon features",
       "Created Returno — a digital wallet and rewards platform",
       "Implemented real-time features and interactive dashboards",
@@ -224,7 +225,7 @@ export default function Experience() {
                 <div className="p-3 sm:p-5 md:p-8 space-y-1 overflow-x-hidden">
                   <div className="space-y-3">
                     {/* Role */}
-                   <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px]">
+                    <div className="flex items-start gap-1.5 sm:gap-3 font-mono text-[10px] sm:text-xs md:text-[13px]">
                       <span className="text-gray-700 shrink-0">01 |</span>
                     </div>
                     <motion.div
@@ -421,7 +422,7 @@ export default function Experience() {
             </AnimatePresence>
           </div>
         </motion.div>
- 
+
         {/* Bottom Terminal Output */}
         <motion.div
           variants={itemVariants}

@@ -35,6 +35,17 @@ FloatingProjectBg.displayName = "FloatingProjectBg";
 
 const projects = [
   {
+    title: "Resume Builder & ATS Checker",
+    description: "AI-powered resume builder and ATS compliance scanner that analyzes resume match against job descriptions with real-time feedback.",
+    tech: ["Next.js","Node.js","Tailwind Css","Express","MongoDB"],
+    link: "https://resumebuilder-rouge.vercel.app",
+    github: "https://github.com/riddheshsoni2008/resume-builder",
+    color: "bg-gradient-to-br from-[#0f172a] to-[#312e81]",
+    shortName: "RB",
+    image: "/resumebuilder.png",
+    video: "/resumebuilder_demo.webp"
+  },
+  {
     title: "LearnStack",
     description: "A comprehensive e-learning platform with real-time collaboration, hackathon management, and interactive dashboards.",
     tech: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
@@ -97,9 +108,7 @@ export default function Projects() {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    // 4 projects -> 0 to 0.25 (idx 0), 0.25 to 0.5 (idx 1), etc.
     const rawIndex = Math.floor(latest * projects.length);
-    // Clamp between 0 and projects.length - 1
     const clampedIndex = Math.max(0, Math.min(projects.length - 1, rawIndex));
     if (clampedIndex !== activeIndex) {
       setActiveIndex(clampedIndex);
@@ -108,8 +117,8 @@ export default function Projects() {
 
   return (
     <section id="projects" className="relative bg-[var(--color-surface)]">
-      {/* 400vh container gives us enough scroll room to transition 4 projects */}
-      <div ref={containerRef} className="h-[400vh] relative">
+      {/* Scrollable container height dynamically calculated from projects length */}
+      <div ref={containerRef} style={{ height: `${projects.length * 100}vh` }} className="relative">
         {/* Sticky container that stays on screen while scrolling */}
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden px-4">
           <FloatingProjectBg />
@@ -145,7 +154,7 @@ export default function Projects() {
                       <div className="w-3 h-3 rounded-full bg-[#27C93F]"></div>
                     </div>
                     <div className="mx-auto font-mono text-[10px] md:text-xs text-gray-500 hidden sm:block">
-                      {projects[activeIndex].title.toLowerCase().replace(/\s+/g, '-')}.jsx
+                      {projects[activeIndex].title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.jsx
                     </div>
                   </div>
 
@@ -196,15 +205,28 @@ export default function Projects() {
 
                         {/* Browser Screen / Video view */}
                         <div className="flex-1 relative overflow-hidden bg-black">
-                          <img
-                            src={projects[activeIndex].video}
-                            alt={`${projects[activeIndex].title} video demo`}
-                            className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover/browser:scale-[1.05]"
-                            onError={(e) => {
-                              // Fallback to static image if video fails to load
-                              e.target.src = projects[activeIndex].image;
-                            }}
-                          />
+                          {projects[activeIndex].video?.endsWith(".webm") || projects[activeIndex].video?.endsWith(".mp4") ? (
+                            <video
+                              key={projects[activeIndex].video}
+                              src={projects[activeIndex].video}
+                              poster={projects[activeIndex].image}
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                              className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover/browser:scale-[1.05]"
+                            />
+                          ) : (
+                            <img
+                              src={projects[activeIndex].video}
+                              alt={`${projects[activeIndex].title} video demo`}
+                              className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover/browser:scale-[1.05]"
+                              onError={(e) => {
+                                // Fallback to static image if video fails to load
+                                e.target.src = projects[activeIndex].image;
+                              }}
+                            />
+                          )}
 
                           {/* Video Recording Badge */}
                           <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 flex items-center gap-2 z-10 pointer-events-none shadow-lg">

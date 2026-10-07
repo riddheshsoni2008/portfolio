@@ -9,6 +9,7 @@ const navLinks = [
   { label: "About", href: "#about", color: "#47A248" }, // MongoDB Green
   { label: "Skills", href: "#skills", color: "#333333" }, // Express Grey
   { label: "Projects", href: "#projects", color: "#149ECA" }, // React Cyan (darker for light mode visibility)
+  { label: "GitHub", href: "#github", color: "#6e5494" }, // GitHub Purple
   { label: "Experience", href: "#experience", color: "#339933" }, // Node Green
   { label: "Contact", href: "#contact", color: "#D4B830" }, // JS Yellow (darker for light mode visibility)
 ];

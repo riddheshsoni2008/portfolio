@@ -132,7 +132,7 @@ export default function Contact() {
         className="max-w-[1280px] mx-auto px-[24px] md:px-[64px] relative z-10"
       >
         {/* Section Header */}
-        <SectionHeader number="05." title="GetInTouch" />
+        <SectionHeader number="06." title="GetInTouch" />
 
         {/* Info text */}
         <motion.div variants={itemVariants} className="max-w-xl mb-12">

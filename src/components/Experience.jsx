@@ -116,7 +116,7 @@ export default function Experience() {
         className="max-w-[1280px] mx-auto px-[24px] md:px-[64px] relative z-10"
       >
         {/* Section Header */}
-        <SectionHeader number="04." title="Experience" />
+        <SectionHeader number="05." title="Experience" />
 
         {/* Subtitle */}
         <motion.div variants={itemVariants} className="mb-12 md:mb-16">

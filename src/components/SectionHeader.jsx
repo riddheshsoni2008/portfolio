@@ -1,20 +1,17 @@
-"use client";
+import Reveal from "./Reveal";
 
-import { motion } from "framer-motion";
-
-export default function SectionHeader({ number, title, className = "" }) {
+export default function SectionHeader({ number, label, title, subtitle, className = "" }) {
   return (
-    <div className={`flex items-center gap-2 md:gap-4 mb-12 md:mb-16 ${className}`}>
-      <span className="label-mono text-[var(--color-tech-blue)] shrink-0">{number}</span>
-      <h2 className="headline-lg text-[28px] sm:text-[36px] md:text-5xl text-[var(--color-primary)] font-sans flex items-center shrink-0 whitespace-nowrap">
-        &lt;{title}&nbsp;/&gt;
-        <motion.span
-          animate={{ opacity: [1, 0, 1] }}
-          transition={{ duration: 1, repeat: Infinity }}
-          className="ml-2 w-2.5 h-7 md:w-3 md:h-10 bg-[var(--color-tech-blue)] inline-block shrink-0"
-        />
+    <Reveal className={`mb-10 md:mb-14 max-w-2xl ${className}`}>
+      <p className="eyebrow mb-3">
+        {number} <span className="text-[var(--color-muted)]">/</span> {label}
+      </p>
+      <h2 className="text-3xl md:text-[44px] md:leading-[1.1] font-bold tracking-tight text-[var(--color-text)]">
+        {title}
       </h2>
-      <div className="hidden sm:block flex-1 h-px bg-[var(--color-outline-variant)] ml-4" />
-    </div>
+      {subtitle && (
+        <p className="mt-4 text-base md:text-lg text-[var(--color-muted)] leading-relaxed">{subtitle}</p>
+      )}
+    </Reveal>
   );
 }

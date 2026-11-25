@@ -245,28 +245,14 @@ export default function GithubActivity() {
   };
 
   return (
-    <section id="github" className="relative py-24 md:py-32 bg-[var(--color-surface)] overflow-hidden">
-      {/* Background Ambience */}
-      <div className="absolute top-1/4 left-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-[1280px] mx-auto px-[24px] md:px-[64px] relative z-10">
-        {/* Section Header */}
-        <SectionHeader number="04." title="OpenSource" />
-
-        {/* Section Intro Subtitle */}
-        <div className="mb-12">
-          <p className="font-mono text-xs sm:text-sm md:text-base text-gray-500">
-            <span className="text-[#C678DD]">const</span>{" "}
-            <span className="text-[#61DAFB]">githubActivity</span>{" "}
-            <span className="text-gray-400">=</span>{" "}
-            <span className="text-[#98C379]">await</span>{" "}
-            <span className="text-[#61DAFB]">fetch</span>
-            <span className="text-gray-400">(</span>
-            <span className="text-[#98C379]">"https://api.github.com/users/riddheshsoni2008"</span>
-            <span className="text-gray-400">);</span>
-          </p>
-        </div>
+    <section id="github" className="section overflow-hidden">
+      <div className="container-page relative z-10">
+        <SectionHeader
+          number="04"
+          label="GitHub"
+          title="My coding activity."
+          subtitle="Live from my GitHub profile: what I've pushed lately and how often I code."
+        />
 
         {/* Top Profile & Identity Card */}
         <div className="bg-[#0D1117] border border-gray-800 rounded-2xl p-6 md:p-8 shadow-2xl mb-8 relative overflow-hidden group">

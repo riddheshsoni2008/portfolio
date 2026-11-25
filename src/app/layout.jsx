@@ -12,7 +12,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Riddhesh | Full-Stack Developer",
+  title: "Riddhesh Soni | Full-Stack Developer",
   description:
     "Professional portfolio of Riddhesh — Full-Stack Developer specializing in React, Next.js, Node.js, and modern web technologies.",
   keywords: [
